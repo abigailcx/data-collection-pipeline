@@ -7,14 +7,14 @@ from bs4 import BeautifulSoup
 # Just think about what tasks you usually perform while browsing different websites.
 
 prop_dict = {}
-webpage = "https://www.zoopla.co.uk/for-sale/property/london/the-ridgeway-e4/e4-6pu/?q=E4+6PU&results_sort=newest_listings&search_source=refine&radius=1&view_type=list"
+url = "https://www.zoopla.co.uk/for-sale/property/london/the-ridgeway-e4/e4-6pu/?q=E4+6PU&results_sort=newest_listings&search_source=refine&radius=1&view_type=list"
 
 properties = []
 page_idx = 1
 
 while page_idx < 6:
-    print(f"{webpage}&pn={page_idx}")
-    response = requests.get(f"{webpage}&pn={page_idx}")
+    print(f"{url}&pn={page_idx}")
+    response = requests.get(f"{url}&pn={page_idx}")
     html = response.content
     html2 = BeautifulSoup(html, 'html.parser')
     properties_page = html2.find_all('div', attrs={"class": "c-PJLV c-PJLV-ieIaIjy-css"})
