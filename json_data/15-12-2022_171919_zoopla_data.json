@@ -1,0 +1,113 @@
+{
+    "1": {
+        "summary": "3 bed terraced house for sale",
+        "price": "£429,500",
+        "address": "Selwyn Avenue, London E4",
+        "num_rooms": [
+            "3 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473639/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "2": {
+        "summary": "3 bed terraced house for sale",
+        "price": "£281,000",
+        "address": "Brimpsfield Close, London SE2",
+        "num_rooms": [
+            "3 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473642/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "3": {
+        "summary": "3 bed terraced house for sale",
+        "price": "£650,000",
+        "address": "Selwyn Avenue, London E4",
+        "num_rooms": [
+            "3 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473651/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "4": {
+        "summary": "1 bed flat for sale",
+        "price": "£300,000",
+        "address": "Gwendoline Avenue, London E13",
+        "num_rooms": [
+            "1 bed",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473652/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "5": {
+        "summary": "3 bed terraced house for sale",
+        "price": "£350,000",
+        "address": "Bentry Road, Dagenham RM8",
+        "num_rooms": [
+            "3 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473637/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "6": {
+        "summary": "3 bed maisonette for sale",
+        "price": "£400,000",
+        "address": "Dersingham Avenue, London E12",
+        "num_rooms": [
+            "3 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473618/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "7": {
+        "summary": "3 bed semi-detached house for sale",
+        "price": "£750,000",
+        "address": "Courtfield Rise, West Wickham, Kent BR4",
+        "num_rooms": [
+            "3 beds",
+            "2 baths",
+            "2 receptions"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473511/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "8": {
+        "summary": "2 bed terraced house for sale",
+        "price": "£995,000",
+        "address": "Balham Grove, London SW12",
+        "num_rooms": [
+            "2 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473502/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "9": {
+        "summary": "2 bed flat for sale",
+        "price": "£1,350,000",
+        "address": "10, Marsh Wall, London E14",
+        "num_rooms": [
+            "2 beds",
+            "2 baths",
+            "1 reception",
+            "861 sq. ft"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473487/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "10": {
+        "summary": "1 bed flat for sale",
+        "price": "£390,000",
+        "address": "Biscayne Avenue, London E14",
+        "num_rooms": [
+            "1 bed",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63473484/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    }
+}

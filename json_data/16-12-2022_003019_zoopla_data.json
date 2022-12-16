@@ -1,0 +1,103 @@
+{
+    "1": {
+        "summary": "2 bed flat for sale",
+        "price": "£450,000",
+        "address": "Argyll Court, 82-84 Lexham Gardens, London W8",
+        "num_rooms": [
+            "2 beds",
+            "2 baths",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63475235/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "2": {
+        "summary": "2 bed flat for sale",
+        "price": "£299,950",
+        "address": "Whitehaven Close, Bromley BR2",
+        "num_rooms": [
+            "2 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63475165/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "3": {
+        "summary": "2 bed property for sale",
+        "price": "£110,000",
+        "address": "8-18 Preston Road, Wembley HA9",
+        "num_rooms": [
+            "2 beds",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63475061/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "4": {
+        "summary": "1 bed flat for sale",
+        "price": "£450,000",
+        "address": "Cosway Street, Marylebone, London NW1",
+        "num_rooms": [
+            "1 bed",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63475057/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "5": {
+        "summary": "3 bed flat for sale",
+        "price": "£300,000",
+        "address": "Westwood Hill, London SE26",
+        "num_rooms": [
+            "3 beds"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63474895/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "6": {
+        "summary": "3 bed terraced house for sale",
+        "price": "£715,000",
+        "address": "Ranelagh Road, London N22",
+        "num_rooms": [
+            "3 beds",
+            "2 baths",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63474861/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "7": {
+        "summary": "1 bed flat for sale",
+        "price": "£280,000",
+        "address": "Romberg Road, London SW17",
+        "num_rooms": [
+            "1 bed",
+            "1 bath",
+            "1 reception"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/58626874/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "8": {
+        "summary": "3 bed maisonette for sale",
+        "price": "£325,000",
+        "address": "Chislehurst Road, Orpington, Kent BR6",
+        "num_rooms": [
+            "3 beds",
+            "1 bath"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/46418462/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "9": {
+        "summary": "1 bed flat for sale",
+        "price": "£220,000",
+        "address": "Plevna Road, London N9",
+        "num_rooms": [
+            "1 bed"
+        ],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63474770/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    },
+    "10": {
+        "summary": "Detached house for sale",
+        "price": "£9,500,000",
+        "address": "Compton Avenue, London N6",
+        "num_rooms": [],
+        "link": "https://www.zoopla.co.uk/for-sale/details/63474652/?search_identifier=4d7389722102d8fdfd4ad88e94643543"
+    }
+}
