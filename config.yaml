@@ -1,0 +1,18 @@
+---
+#zoopla config
+base_url: 'https://www.zoopla.co.uk'
+url: 'https://www.zoopla.co.uk/for-sale/property/london/?search_source=facets&view_type=list'
+page_size: 15 # number of properties to show
+json_outfile: 'zoopla_data.json'
+csv_outfile: 'zoopla_data.csv'
+xpath_for_regular_prop_page_list: '//div[@class="css-1itfubx eluk2p60"]' # look for data-testid="regular-listings"
+xpath_for_featured_prop_page_list: '//div[@class="css-uti5dl ezroyvp13"]' # look for data-testid="featured-listings"
+xpath_summary: '//div[@class="c-PJLV c-PJLV-ieHhfWi-css"]'
+xpath_price: '//p[@data-testid="price"]'
+xpath_address: '//address[@data-testid="address-label"]'
+xpath_room_count: '//div[@class="c-cbuYEU c-cbuYEU-egQFzo-isAnAttribute-true c-cbuYEU-iPJLV-css"]'
+xpath_num_rooms: './div[@class="c-PJLV c-PJLV-kQvhQW-centered-true c-PJLV-iPJLV-css"]'
+xpath_image_gallery: '//li[@data-testid="gallery-image"]'
+xpath_images: '//img[@role="img"]'
+
+
