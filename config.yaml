@@ -3,6 +3,7 @@
 base_url: 'https://www.zoopla.co.uk'
 url: 'https://www.zoopla.co.uk/for-sale/property/london/?search_source=facets&view_type=list'
 page_size: 15 # number of properties to show
+extract_image_data: !!bool false
 json_outfile: 'zoopla_data.json'
 csv_outfile: 'zoopla_data.csv'
 xpath_for_regular_prop_page_list: '//div[@class="css-1itfubx eluk2p60"]' # look for data-testid="regular-listings"
