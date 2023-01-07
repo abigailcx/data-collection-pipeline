@@ -12,22 +12,31 @@ import yaml
 
 class Scraper:
     """
+    This class stores attributes and methods related to scraping zoopla.co.uk
 
+    Attributes:
+        config_file (yaml): a configuration file which stores information about:
+            - which url to scrape
+            - how many properties to get data for
+            - names of json and csv output files
+            - all necessary xpaths
+        driver: starts the ChromeDriver server process
+        prop_url_list (list): empty list to add urls for each individual property page (zoopla)
+        prop_dict (dict): initialises an empty dictionary into which all property text data will be read
     """
 
     def __init__(self, config_file):
         self.config_file = config_file
         self.driver = webdriver.Chrome()
-        self.prop_url_list = [] # empty list to add urls for each individual property page (zoopla)
+        self.prop_url_list = []
         self.prop_dict = collections.defaultdict(dict)
 
     def get_config(self):
         """
-        A method to retrieve configuration information from config.yaml file such as:
-        - which url to scrape
-        - how many properties to get data for
-        - names of json and csv output files
-        - all necessary xpaths
+        A method to retrieve configuration information from config.yaml file
+
+        Returns:
+            a dictionary with the configuration information stored in it
         """
 
         with open(self.config_file, 'r') as f:
@@ -82,7 +91,16 @@ class Scraper:
 
     def extract_prop_data(self):
         """
+        A method to scrape text data and image data
 
+        Information scraped includes:
+            - address
+            - price
+            - number of bedrooms, bathrooms and living num_rooms
+            - URL of property page
+
+        Creates a dictionary of dictionaries, where each dictionary includes the text data for a given property
+        [optional] Downloads property images to locally created directory if extract_image_data is set to true in config.yaml
         """
         for num, url in enumerate(self.prop_url_list, start=1):
             self.driver.get(url)
@@ -164,7 +182,8 @@ class Scraper:
 
     def scrape(self):
         """
-
+        A method to run all necessary methods for scraping 
+        Note that this method does not read the data into a file
         """
         self.get_config()
         self.handle_cookies()
