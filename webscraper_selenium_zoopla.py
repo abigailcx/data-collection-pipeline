@@ -5,8 +5,10 @@ import collections
 import json
 import os
 import pandas as pd
+import sys
 import time
 import urllib
+import validators
 import yaml
 
 
@@ -38,11 +40,23 @@ class Scraper:
         Returns:
             a dictionary with the configuration information stored in it
         """
+        if os.path.exists(self.config_file):
+            with open(self.config_file, 'r') as f:
+                config_dict = yaml.load(f, Loader=yaml.FullLoader)
+        else:
+            print(f"The configuration file '{self.config_file}' does not exist. Please provide a valid YAML configuration file.")
+            sys.exit()
 
-        with open(self.config_file, 'r') as f:
-            config_dict = yaml.load(f, Loader=yaml.FullLoader)
-        
         return config_dict
+
+    def validate_url(self):
+        URL = self.get_config()['url']
+        if not validators.url(URL):
+            print(f"URL error: the url {URL} is not valid. Please amend in the 'config.'yaml' file and try again.")
+            sys.exit()
+        
+        else:
+            pass
 
     def handle_cookies(self):
         """
@@ -157,7 +171,7 @@ class Scraper:
                 continue
 
 
-    def get_csv(self):
+    def save_csv(self):
         """
         A method to create a csv file of scraped property data
         """
@@ -168,7 +182,7 @@ class Scraper:
         df.to_csv(filedir_csv)
 
 
-    def get_json(self):
+    def save_json(self):
         """
         A method to create a json file of scraped property data
         """
@@ -186,6 +200,7 @@ class Scraper:
         Note that this method does not read the data into a file
         """
         self.get_config()
+        # self.validate_url()
         self.handle_cookies()
         self.get_urls()
         self.extract_prop_data()
