@@ -209,6 +209,6 @@ class Scraper:
 if __name__ == "__main__":
     s = Scraper('config.yaml')
     s.scrape()
-    s.get_csv()
-    s.get_json()
+    s.save_csv()
+    s.save_json()
     
