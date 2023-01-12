@@ -1,6 +1,8 @@
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import WebDriverException
 import collections
 import json
 import os
@@ -8,8 +10,9 @@ import pandas as pd
 import sys
 import time
 import urllib
-import validators
 import yaml
+
+
 
 
 class Scraper:
@@ -29,7 +32,9 @@ class Scraper:
 
     def __init__(self, config_file):
         self.config_file = config_file
-        self.driver = webdriver.Chrome()
+        chromeOptions = Options()
+        chromeOptions.headless = True
+        self.driver = webdriver.Chrome(options=chromeOptions)
         self.prop_url_list = []
         self.prop_dict = collections.defaultdict(dict)
 
@@ -49,14 +54,6 @@ class Scraper:
 
         return config_dict
 
-    def validate_url(self):
-        URL = self.get_config()['url']
-        if not validators.url(URL):
-            print(f"URL error: the url {URL} is not valid. Please amend in the 'config.'yaml' file and try again.")
-            sys.exit()
-        
-        else:
-            pass
 
     def handle_cookies(self):
         """
@@ -64,7 +61,11 @@ class Scraper:
         """
 
         URL = f"{self.get_config()['url']}&page_size={self.get_config()['page_size']}"
-        self.driver.get(URL)
+        try:
+            self.driver.get(URL)
+        except WebDriverException:
+            print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
+            sys.exit(1)
         time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
         
         try:
@@ -200,7 +201,6 @@ class Scraper:
         Note that this method does not read the data into a file
         """
         self.get_config()
-        # self.validate_url()
         self.handle_cookies()
         self.get_urls()
         self.extract_prop_data()
