@@ -1,8 +1,3 @@
-from datetime import datetime
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import WebDriverException
 import collections
 import json
 import os
@@ -11,8 +6,12 @@ import sys
 import time
 import urllib
 import yaml
-
-
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import WebDriverException
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class Scraper:
@@ -35,7 +34,12 @@ class Scraper:
         chromeOptions = Options()
         chromeOptions.add_argument('--no-sandbox')
         chromeOptions.add_argument('--headless')
-        self.driver = webdriver.Chrome(options=chromeOptions)
+        chromeOptions.add_argument('--disable-dev-shm-usage')
+        chromeOptions.add_argument('--disable-setui-sandbox')
+        chromeOptions.add_argument('--disable-gpu')
+        chromeOptions.add_argument('window-size=1920,1080')
+        chromeOptions.add_argument("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005 Safari/537.36'")
+        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
         self.prop_url_list = []
         self.prop_dict = collections.defaultdict(dict)
 
@@ -62,12 +66,12 @@ class Scraper:
         """
 
         URL = f"{self.get_config()['url']}&page_size={self.get_config()['page_size']}"
-        try:
-            self.driver.get(URL)
-        except WebDriverException as e:
-            print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
-            print(e)
-            sys.exit(1)
+        #try:
+        self.driver.get(URL)
+        #except WebDriverException as e:
+            # print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
+            # print(e)
+            # sys.exit(1)
         time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
         
         try:
