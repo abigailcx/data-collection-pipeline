@@ -33,7 +33,8 @@ class Scraper:
     def __init__(self, config_file):
         self.config_file = config_file
         chromeOptions = Options()
-        chromeOptions.headless = True
+        chromeOptions.add_argument('--no-sandbox')
+        chromeOptions.add_argument('--headless')
         self.driver = webdriver.Chrome(options=chromeOptions)
         self.prop_url_list = []
         self.prop_dict = collections.defaultdict(dict)
@@ -63,8 +64,9 @@ class Scraper:
         URL = f"{self.get_config()['url']}&page_size={self.get_config()['page_size']}"
         try:
             self.driver.get(URL)
-        except WebDriverException:
+        except WebDriverException as e:
             print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
+            print(e)
             sys.exit(1)
         time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
         
