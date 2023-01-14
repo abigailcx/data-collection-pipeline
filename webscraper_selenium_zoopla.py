@@ -66,12 +66,13 @@ class Scraper:
         """
 
         URL = f"{self.get_config()['url']}&page_size={self.get_config()['page_size']}"
-        #try:
-        self.driver.get(URL)
-        #except WebDriverException as e:
-            # print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
-            # print(e)
-            # sys.exit(1)
+        try:
+            self.driver.get(URL)
+        
+        except WebDriverException as e:
+            print(f"\nURL ERROR: there is a problem with the URL.\n'{URL}' may be down or may not be a valid URL.\nPlease check and amend in the 'config.'yaml' file and try again.\n")
+            #print(e)
+            sys.exit(1)
         time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
         
         try:
