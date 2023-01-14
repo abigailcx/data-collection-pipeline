@@ -10,7 +10,9 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import WebDriverException
+from tqdm import tqdm
 from webdriver_manager.chrome import ChromeDriverManager
 
 
@@ -39,7 +41,7 @@ class Scraper:
         chromeOptions.add_argument('--disable-gpu')
         chromeOptions.add_argument('window-size=1920,1080')
         chromeOptions.add_argument("user-agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005 Safari/537.36'")
-        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chromeOptions)
+        self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chromeOptions)
         self.prop_url_list = []
         self.prop_dict = collections.defaultdict(dict)
 
@@ -64,7 +66,6 @@ class Scraper:
         """
         A method to accept the cookies pop-up window 
         """
-
         URL = f"{self.get_config()['url']}&page_size={self.get_config()['page_size']}"
         try:
             self.driver.get(URL)
@@ -75,6 +76,7 @@ class Scraper:
             sys.exit(1)
         time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
         
+        print("Handling cookies...")
         try:
             self.driver.switch_to_frame('gdpr-consent-notice') # This is the id of the frame
             accept_cookies_button = self.driver.find_element(by=By.XPATH, value='//*[@id="save"]')
@@ -124,7 +126,9 @@ class Scraper:
         Creates a dictionary of dictionaries, where each dictionary includes the text data for a given property
         [optional] Downloads property images to locally created directory if extract_image_data is set to true in config.yaml
         """
-        for num, url in enumerate(self.prop_url_list, start=1):
+        print(f"Extracting data from {self.get_config()['url']}")
+
+        for num, url in tqdm(enumerate(self.prop_url_list, start=1), total=self.get_config()['page_size']):
             self.driver.get(url)
             time.sleep(2) # Wait a couple of seconds, so the website doesn't suspect you are a bot
             
@@ -171,7 +175,7 @@ class Scraper:
                         pass
 
                 for idx, url in enumerate(img_src, start=1):
-                    filedir_img = f"./image_data/{datetime.now().strftime('%d-%m-%Y')}/{num}_{address.text}/{idx}.jpg"
+                    filedir_img = f"./property_data/image_data/{datetime.now().strftime('%d-%m-%Y')}/{num}_{address.text}/{idx}.jpg"
                     os.makedirs(os.path.dirname(filedir_img), exist_ok=True)
                     urllib.request.urlretrieve(url, filedir_img)
             
@@ -183,7 +187,8 @@ class Scraper:
         """
         A method to create a csv file of scraped property data
         """
-        filedir_csv = f"./csv_data/{datetime.now().strftime('%d-%m-%Y_%H%M%S')}_{self.get_config()['csv_outfile']}"
+        print("Saving data to csv file...")
+        filedir_csv = f"./property_data/csv_data/{datetime.now().strftime('%d-%m-%Y_%H%M%S')}_{self.get_config()['csv_outfile']}"
         os.makedirs(os.path.dirname(filedir_csv), exist_ok=True)
         df = pd.DataFrame(self.prop_dict)
         df = df.transpose()
@@ -194,9 +199,9 @@ class Scraper:
         """
         A method to create a json file of scraped property data
         """
-
+        print("Saving data to json file...")
         prop_data = json.dumps(self.prop_dict, sort_keys=False, indent=4, ensure_ascii=False)
-        filedir_json = f"./json_data/{datetime.now().strftime('%d-%m-%Y_%H%M%S')}_{self.get_config()['json_outfile']}"
+        filedir_json = f"./property_data/json_data/{datetime.now().strftime('%d-%m-%Y_%H%M%S')}_{self.get_config()['json_outfile']}"
         os.makedirs(os.path.dirname(filedir_json), exist_ok=True)
         with open(filedir_json, 'w') as outfile:
             outfile.write(prop_data)
